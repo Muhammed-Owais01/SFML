@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Owais\\SFML\\Open World RPG\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A6909997-38F8-4D3A-9C7E-F6ABD802B14D}|Open World RPG\\Open World RPG.vcxproj|D:\\Owais\\SFML\\Open World RPG\\Open World RPG\\Open World RPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A6909997-38F8-4D3A-9C7E-F6ABD802B14D}|Open World RPG\\Open World RPG.vcxproj|solutionrelative:Open World RPG\\Open World RPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Open World RPG.cpp",
+              "DocumentMoniker": "D:\\Owais\\SFML\\Open World RPG\\Open World RPG\\Open World RPG.cpp",
+              "RelativeDocumentMoniker": "Open World RPG\\Open World RPG.cpp",
+              "ToolTip": "D:\\Owais\\SFML\\Open World RPG\\Open World RPG\\Open World RPG.cpp",
+              "RelativeToolTip": "Open World RPG\\Open World RPG.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-03T14:36:50.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
