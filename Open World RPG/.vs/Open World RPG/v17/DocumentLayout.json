@@ -38,15 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -71,8 +67,7 @@
               "RelativeToolTip": "Open World RPG\\State.h",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-05T14:42:05.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-05T14:42:05.262Z"
             },
             {
               "$type": "Document",
@@ -84,8 +79,7 @@
               "RelativeToolTip": "Open World RPG\\GameState.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-05T13:58:35.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-05T13:58:35.238Z"
             },
             {
               "$type": "Document",
@@ -97,8 +91,7 @@
               "RelativeToolTip": "Open World RPG\\GameState.cpp",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABUAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-05T13:59:50.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-05T13:59:50.676Z"
             },
             {
               "$type": "Document",
@@ -110,8 +103,7 @@
               "RelativeToolTip": "Open World RPG\\Game.h",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-04T12:17:56.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T12:17:56.907Z"
             },
             {
               "$type": "Document",
@@ -123,8 +115,7 @@
               "RelativeToolTip": "Open World RPG\\Game.cpp",
               "ViewState": "AQIAAEkAAAAAAAAAAAAawFQAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-04T17:04:18.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T17:04:18.154Z"
             },
             {
               "$type": "Document",
@@ -136,8 +127,7 @@
               "RelativeToolTip": "Open World RPG\\Open World RPG.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-03T14:36:50.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T14:36:50.633Z"
             }
           ]
         }

@@ -3,7 +3,7 @@ Space Game
 Practice 1
 OOP Project Files
 Better Learning
-
+Open World RPG/.vs
 
 ### GENERATED FROM A WEBSITE
 ### VisualStudio ###
@@ -42,7 +42,7 @@ bld/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
-*.vs
+.vs
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
