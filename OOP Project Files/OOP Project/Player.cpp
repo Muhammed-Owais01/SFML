@@ -4,23 +4,8 @@ void Player::initVariables(sf::RenderWindow& window)
 {
 	this->circle.setRadius(30.f);
 	this->circle.setFillColor(sf::Color::White);
-
-	this->moveSpeed = 5.f;
-
+	
 	this->platform = Platform(window);
-}
-
-void Player::initPhysics()
-{
-	this->velocityMax = 5.f;
-	this->velocityMin = 1.f;
-	this->acceleration = 2.f;
-	this->drag = 0.95f;
-	this->gravity = 5.f;
-	this->velocityMaxY = 15.f;
-	this->jump = 20.f;
-	this->velocity.x = 0.f;
-	this->velocity.y = 0.f;
 }
 
 Player::Player()
@@ -31,7 +16,6 @@ Player::Player()
 Player::Player(sf::RenderWindow& window)
 {
 	this->initVariables(window);
-	this->initPhysics();
 }
 
 Player::~Player()
@@ -73,25 +57,26 @@ void Player::updatePlatformCollision()
 	float platformTop = this->platform.getBounds().top;
 	float platformBottom = this->platform.getBounds().top + this->platform.getBounds().height;
 
+
 	if (newPlayerPos.intersects(this->platform.getBounds()))
 	{
 		// Box Top
 		if ((playerBottom >= platformTop && playerBottom < platformBottom)
-			&& (playerRight >= platformLeft + std::abs(this->velocity.x * 2) && playerLeft < platformRight - std::abs(this->velocity.x * 2)))
+			&& (playerRight >= platformLeft + std::abs(this->getVelocity().x * 2) && playerLeft < platformRight - std::abs(this->getVelocity().x * 2)))
 			this->circle.setPosition(this->circle.getPosition().x, this->platform.getBounds().top - newPlayerPos.height);
 
 		// Box Left
 		else if ((playerRight > platformLeft && playerRight < platformRight)
-			&& (playerBottom >= platformTop + std::abs(this->velocity.y * 2) && playerTop <= platformBottom - std::abs(this->velocity.y * 2)))
+			&& (playerBottom >= platformTop + std::abs(this->getVelocity().y * 2) && playerTop <= platformBottom - std::abs(this->getVelocity().y * 2)))
 			this->circle.setPosition(this->platform.getBounds().left - newPlayerPos.width, this->circle.getPosition().y);
 
 		// Box Bottom
 		else if ((playerTop < platformBottom && playerBottom > platformTop)
-			&& (playerRight >= platformLeft + std::abs(this->velocity.x * 2) && playerLeft <= platformRight - std::abs(this->velocity.x * 2)))
+			&& (playerRight >= platformLeft + std::abs(this->getVelocity().x * 2) && playerLeft <= platformRight - std::abs(this->getVelocity().x * 2)))
 			this->circle.setPosition(this->circle.getPosition().x, this->platform.getBounds().top + this->platform.getBounds().height);
 
 		// Box Right
-		else if ((playerLeft < platformRight && playerRight > platformLeft + std::abs(this->velocity.x * 2))
+		else if ((playerLeft < platformRight && playerRight > platformLeft + std::abs(this->getVelocity().x * 2))
 			&& (playerBottom >= platformTop && playerTop <= platformBottom))
 			this->circle.setPosition(this->platform.getBounds().left + this->platform.getBounds().width, this->circle.getPosition().y);
 	}
@@ -99,35 +84,14 @@ void Player::updatePlatformCollision()
 
 void Player::move(const float dir_x, const float dir_y)
 {
-	this->velocity.x += dir_x * this->acceleration;
+	this->changeVelocity(dir_x * this->getAcceleration(), 0.f);
 
-	if (std::abs(this->velocity.x) > this->velocityMax)
+	if (std::abs(this->getVelocity().x) > this->getVelocityMax())
 	{
-		this->velocity.x = this->velocityMax * ((this->velocity.x < 0) ? -1.f : 1.f);
+		this->getVelocity().x = this->getVelocityMax() * ((this->getVelocity().x < 0) ? -1.f : 1.f);
 	}
 
-	this->velocity.y = dir_y * this->jump;
-}
-
-void Player::updatePhysics()
-{
-	this->velocity.y += gravity;
-	if (std::abs(this->velocity.y) > this->velocityMaxY)
-	{
-		this->velocity.y = this->velocityMaxY * ((this->velocity.y < 0) ? -1.f : 1.f);
-	}
-
-	this->velocity *= this->drag;
-	if (std::abs(this->velocity.x) < this->velocityMin)
-	{
-		this->velocity.x = 0.f;
-	}
-	if (std::abs(this->velocity.y) < this->velocityMin)
-	{
-		this->velocity.y = 0.f;
-	}
-
-	this->circle.move(this->velocity);
+	this->getVelocity().y = dir_y * this->getJump();
 }
 
 void Player::updateMovement()
@@ -156,6 +120,7 @@ void Player::updateMovement()
 	{
 		this->move(1.f, -1.f);
 	}
+	this->circle.move(this->getVelocity());
 }
 
 

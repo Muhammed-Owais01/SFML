@@ -3,17 +3,14 @@
 #include "Platform.h"
 
 class Player
+	: public GameEngine
 {
 private:
 	sf::CircleShape circle;
-	int moveSpeed;
-	sf::Vector2f velocity;
-	float velocityMin, velocityMax, acceleration, gravity, drag, velocityMaxY, jump;
 
 	Platform platform;
 
 	void initVariables(sf::RenderWindow& window);
-	void initPhysics();
 public:
 	Player();
 	Player(sf::RenderWindow& window);
@@ -24,7 +21,6 @@ public:
 	void updateWindowCollision(sf::RenderWindow& window);
 	void updatePlatformCollision();
 	void move(const float dir_x, const float dir_y);
-	void updatePhysics();
 	void updateMovement();
 
 	void update(sf::RenderWindow& window);
