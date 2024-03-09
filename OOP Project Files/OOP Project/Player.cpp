@@ -10,6 +10,19 @@ void Player::initVariables(sf::RenderWindow& window)
 	this->platform = Platform(window);
 }
 
+void Player::initPhysics()
+{
+	this->velocityMax = 5.f;
+	this->velocityMin = 1.f;
+	this->acceleration = 2.f;
+	this->drag = 0.95f;
+	this->gravity = 5.f;
+	this->velocityMaxY = 15.f;
+	this->jump = 20.f;
+	this->velocity.x = 0.f;
+	this->velocity.y = 0.f;
+}
+
 Player::Player()
 {
 
@@ -18,6 +31,7 @@ Player::Player()
 Player::Player(sf::RenderWindow& window)
 {
 	this->initVariables(window);
+	this->initPhysics();
 }
 
 Player::~Player()
@@ -63,49 +77,91 @@ void Player::updatePlatformCollision()
 	{
 		// Box Top
 		if ((playerBottom >= platformTop && playerBottom < platformBottom)
-			&& (playerRight >= platformLeft + this->moveSpeed * 2 && playerLeft < platformRight - this->moveSpeed * 2))
+			&& (playerRight >= platformLeft + std::abs(this->velocity.x * 2) && playerLeft < platformRight - std::abs(this->velocity.x * 2)))
 			this->circle.setPosition(this->circle.getPosition().x, this->platform.getBounds().top - newPlayerPos.height);
 
 		// Box Left
 		else if ((playerRight > platformLeft && playerRight < platformRight)
-			&& (playerBottom >= platformTop + this->moveSpeed * 2 && playerTop <= platformBottom - this->moveSpeed * 2))
+			&& (playerBottom >= platformTop + std::abs(this->velocity.y * 2) && playerTop <= platformBottom - std::abs(this->velocity.y * 2)))
 			this->circle.setPosition(this->platform.getBounds().left - newPlayerPos.width, this->circle.getPosition().y);
 
 		// Box Bottom
 		else if ((playerTop < platformBottom && playerBottom > platformTop)
-			&& (playerRight >= platformLeft + this->moveSpeed * 2 && playerLeft <= platformRight - this->moveSpeed * 2))
+			&& (playerRight >= platformLeft + std::abs(this->velocity.x * 2) && playerLeft <= platformRight - std::abs(this->velocity.x * 2)))
 			this->circle.setPosition(this->circle.getPosition().x, this->platform.getBounds().top + this->platform.getBounds().height);
 
 		// Box Right
-		else if ((playerLeft < platformRight && playerRight > platformLeft + this->moveSpeed * 2)
+		else if ((playerLeft < platformRight && playerRight > platformLeft + std::abs(this->velocity.x * 2))
 			&& (playerBottom >= platformTop && playerTop <= platformBottom))
 			this->circle.setPosition(this->platform.getBounds().left + this->platform.getBounds().width, this->circle.getPosition().y);
 	}
 }
 
+void Player::move(const float dir_x, const float dir_y)
+{
+	this->velocity.x += dir_x * this->acceleration;
+
+	if (std::abs(this->velocity.x) > this->velocityMax)
+	{
+		this->velocity.x = this->velocityMax * ((this->velocity.x < 0) ? -1.f : 1.f);
+	}
+
+	this->velocity.y = dir_y * this->jump;
+}
+
+void Player::updatePhysics()
+{
+	this->velocity.y += gravity;
+	if (std::abs(this->velocity.y) > this->velocityMaxY)
+	{
+		this->velocity.y = this->velocityMaxY * ((this->velocity.y < 0) ? -1.f : 1.f);
+	}
+
+	this->velocity *= this->drag;
+	if (std::abs(this->velocity.x) < this->velocityMin)
+	{
+		this->velocity.x = 0.f;
+	}
+	if (std::abs(this->velocity.y) < this->velocityMin)
+	{
+		this->velocity.y = 0.f;
+	}
+
+	this->circle.move(this->velocity);
+}
+
 void Player::updateMovement()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	// JUMP
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		this->circle.move(0.f, -this->moveSpeed);
+		this->move(0.f, -1.f);
 	}
+	// Move Backwards
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		this->circle.move(-this->moveSpeed, 0.f);
+		this->move(-1.f, 0.f);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		this->circle.move(0.f, this->moveSpeed);
-	}
+	}*/
+	// Move Forward
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		this->circle.move(this->moveSpeed, 0.f);
+		this->move(1.f, 0.f);
+	}
+	// Jump Forward
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		this->move(1.f, -1.f);
 	}
 }
 
 
 void Player::update(sf::RenderWindow& window)
 {
+	this->updatePhysics();
 	this->updateMovement();
 	this->updateWindowCollision(window);
 	this->updatePlatformCollision();
