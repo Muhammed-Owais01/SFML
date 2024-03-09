@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Player.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -9,6 +10,7 @@ private:
 	sf::Event event;
 
 	Player player;
+	Enemy enemy;
 
 	void initWindow();
 	void initVariables();
