@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <tuple>
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>

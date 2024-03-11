@@ -1,0 +1,7 @@
+https://gamedev.net/forums/topic/614067-walking-enemy-better-algorithm-sfml-c/4878943/
+
+https://www.emanueleferonato.com/2007/10/06/make-a-flash-game-like-flash-element-tower-defense-part-1/
+
+https://www.gamedev.net/forums/topic/695645-best-way-to-implement-path-finding-in-2d-game/5373437/
+
+https://www.reddit.com/r/gamedev/comments/2w6sf4/basic_node_based_pathfinding/
